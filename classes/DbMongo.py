@@ -1,13 +1,14 @@
 import pymongo
+import os
 
 class DbMongo:
         
         @staticmethod
         
         def getDB():
-            user = 'Adimari'
-            password = '99725478Adimari'
-            cluster = 'poounahclase3.v7p4vxg.mongodb.net'
+            user = os.environ['USERMONGO']
+            password = os.environ['PASSWORDMONGO']
+            cluster = os.environ['CLUSTER']
             query_string = 'retryWrites=true&w=majority'
 
          ## Connection String
@@ -20,5 +21,6 @@ class DbMongo:
         
             store=pymongo.MongoClient(uri)
             db=store['ejercicio-practica']
+            db=store[os.environ['DB']]
             
-            return db
+            return store, db
