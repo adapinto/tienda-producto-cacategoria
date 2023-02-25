@@ -20,7 +20,7 @@ class DbMongo:
             )
         
             store=pymongo.MongoClient(uri)
-            db=store['ejercicio-practica']
+            #db=store['ejercicio-practica']
             db=store[os.environ['DB']]
             
             return store, db
