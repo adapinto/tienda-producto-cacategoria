@@ -2,9 +2,10 @@ from classes.DbMongo import DbMongo
 
 class Tienda:
     
-    def __init__(self,nombre,telefono,id=""):
+    def __init__(self,nombre,telefono,categoria_tienda,id=""):
         self.nombre = nombre
         self.telefono=telefono
+        self.categoria_tienda=categoria_tienda
         self.__id=id
         self.__collection= "tienda"
         
@@ -40,4 +41,10 @@ class Tienda:
 
             list_tiendas.append(temp_tienda)
         return list_tiendas
+    
+    @staticmethod
+    def delete_all(db):
+        lista_e = Tienda.get_list(db)
+        for e in lista_e:
+            e.delete(db)    
         
